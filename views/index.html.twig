@@ -8,7 +8,26 @@
             <div class="jumbotron">
                 <h1>Community College University</h1>
             </div>
-            
+            <h2>Registrar Database</h2>
+            <form id="add_student" action="/" method="post">
+                <p>Add a new student:</p>
+                <input id="student_name" placeholder="Student Full Name" name="student_name" type="text" required>
+                <input id="enrollment_date" placeholder="Enrollment Date" name="enrollment_date" type="date" required>
+
+                <button type="submit" class="btn btn-success">Add</button>
+            </form>
+
+            {% if students is not empty %}
+                Full student list below:
+                <ul>
+                    {% for student in students %}
+                        <li>{{ student.getStudentName }} |
+                        {{ student.getEnrollmentDate }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+            {% endif %}
+
         </div>
     </body>
 </html>

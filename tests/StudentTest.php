@@ -14,6 +14,11 @@
 
     class StudentTest extends PHPUnit_Framework_TestCase
     {
+        protected function tearDown()
+        {
+            Student::deleteAll();
+        }
+
         function testSetStudentName()
         {
             // Arrange
@@ -107,6 +112,47 @@
 
             // Assert
             $this->assertTrue($executed, "This student has not been saved to the database.");
+        }
+
+        function testGetAll()
+        {
+            // Arrange
+            $student_name = 'Mario Batali';
+            $enrollment_date = '2017-08-15';
+            $test_student = new Student($student_name, $enrollment_date);
+            $test_student->save();
+
+            $student_name_2 = 'Susan Feniger';
+            $enrollment_date_2 = '2017-10-22';
+            $test_student_2 = new Student($student_name, $enrollment_date);
+            $test_student_2->save();
+
+            // Act
+            $result = Student::getAll();
+
+            // Assert
+            $this->assertEquals([$test_student, $test_student_2], $result);
+        }
+
+        function testDeleteAll()
+        {
+            // Arrange
+            $student_name = "Shawn Hunter";
+            $enrollment_date = "2015-09-13";
+            $test_student = new Student ($student_name, $enrollment_date);
+            $test_student->save();
+
+            $student_name2 = "Corey Matthews";
+            $enrollment_date2 = "2015-09-14";
+            $test_student2 = new Student ($student_name2, $enrollment_date2);
+            $test_student2->save();
+
+            // Act
+            Student::deleteAll();
+            $result = Student::getAll();
+
+            // Assert
+            $this->assertEquals([], $result);
         }
     }
 ?>

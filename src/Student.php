@@ -47,6 +47,32 @@
                  return false;
             }
         }
+
+        static function getAll()
+        {
+            $returned_students = $GLOBALS['DB']->query("SELECT * FROM students;");
+            $students = array();
+            foreach($returned_students as $student) {
+                $student_name = $student['student_name'];
+                $enrollment_date = $student['enrollment_date'];
+                $id = $student['id'];
+                $new_student = new Student($student_name, $enrollment_date, $id);
+                array_push($students, $new_student);
+            }
+
+            var_dump($returned_students);
+            return $students;
+        }
+
+        static function deleteAll()
+        {
+            $executed = $GLOBALS['DB']->exec("DELETE FROM students");
+            if ($executed) {
+                return true;
+            } else {
+                return false;
+            }
+        }
     }
 
 ?>

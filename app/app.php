@@ -17,7 +17,16 @@
     $app->register(new Silex\Provider\TwigServiceProvider(), array('twig.path' => __DIR__.'/../views'));
 
     $app->get('/', function() use ($app) {
-        return $app['twig']->render('index.html.twig');
+        return $app['twig']->render('index.html.twig', array('students' => Student::getAll()));
+    });
+
+    $app->post('/', function() use ($app) {
+        $student_name = $_POST['student_name'];
+        $enrollment_date = $_POST['enrollment_date'];
+        $student = new Student($student_name, $enrollment_date);
+        $student->save();
+
+        return $app['twig']->render('index.html.twig', array('students' => Student::getAll());
     });
 
     return $app;
