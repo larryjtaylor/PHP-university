@@ -78,7 +78,6 @@
 
             // Assert
             $this->assertEquals($enrollment_date, $result);
-
         }
 
         function testGetId()
@@ -89,7 +88,15 @@
         function testSave()
         {
             // Arrange
+            $student_name = 'Mario Batali';
+            $enrollment_date = '2017-08-15';
+            $test_student = new Student($student_name, $enrollment_date);
 
+            // Act
+            $executed = $test_student->save();
+
+            // Assert
+            $this->assertTrue($executed, "This student has not been saved to the database.");
         }
     }
 ?>

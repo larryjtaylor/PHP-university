@@ -39,13 +39,13 @@
 
         function save()
         {
-            // $executed = $GLOBALS['DB']->exec("INSERT INTO students (student_name) VALUES ('{$this->getStudentName()}')");
-            // if ($executed) {
-            //      $this->id= $GLOBALS['DB']->lastInsertId();
-            //      return true;
-            // } else {
-            //      return false;
-            // }
+            $executed = $GLOBALS['DB']->exec("INSERT INTO students (student_name) VALUES ('{$this->getStudentName()}')");
+            if ($executed) {
+                 $this->id= $GLOBALS['DB']->lastInsertId();
+                 return true;
+            } else {
+                 return false;
+            }
         }
     }
 
