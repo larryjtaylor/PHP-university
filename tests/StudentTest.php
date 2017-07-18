@@ -49,11 +49,35 @@
 
         function testSetEnrollmentDate()
         {
+            // Arrange
+            $student_name = 'Mario Batali';
+            $enrollment_date = '2017-08-15';
+            $test_student = new Student($student_name, $enrollment_date);
+            $test_student->save();
 
+            $new_enrollment_date = '2018-01-06';
+
+            // Act
+            $test_student->setEnrollmentDate($new_enrollment_date);
+            $result = $test_student->getEnrollmentDate();
+
+            // Assert
+            $this->assertEquals($new_enrollment_date, $result);
         }
 
         function testGetEnrollmentDate()
         {
+            // Arrange
+            $student_name = 'Mario Batali';
+            $enrollment_date = '2017-08-15';
+            $test_student = new Student($student_name, $enrollment_date);
+            $test_student->save();
+
+            // Act
+            $result = $test_student->getEnrollmentDate();
+
+            // Assert
+            $this->assertEquals($enrollment_date, $result);
 
         }
 

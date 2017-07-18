@@ -14,38 +14,38 @@
 
         function setCourseName($new_course_name)
         {
-            $this->course_name = (string) $new_course_name;
+            // $this->course_name = (string) $new_course_name;
         }
 
         function getCourseName()
         {
-            return $this->course_name;
+            // return $this->course_name;
         }
 
         function setEnrollmentDate($new_enrollment_date)
         {
-            $this->enrollment_date = DateTime($new_enrollment_date);
+            // $this->enrollment_date = DateTime($new_enrollment_date);
         }
 
         function getEnrollmentDate()
         {
-            return $this->enrollment_date;
+            // return $this->enrollment_date;
         }
 
         function getId()
         {
-            return $this->id;
+            // return $this->id;
         }
 
         function save()
         {
-            $executed = $GLOBALS['DB']->exec("INSERT INTO courses (course_name) VALUES ('{$this->getCourseName()}')");
-            if ($executed) {
-                 $this->id= $GLOBALS['DB']->lastInsertId();
-                 return true;
-            } else {
-                 return false;
-            }
+            // $executed = $GLOBALS['DB']->exec("INSERT INTO courses (course_name) VALUES ('{$this->getCourseName()}')");
+            // if ($executed) {
+            //      $this->id= $GLOBALS['DB']->lastInsertId();
+            //      return true;
+            // } else {
+            //      return false;
+            // }
         }
     }
 ?>

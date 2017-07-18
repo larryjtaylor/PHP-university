@@ -24,12 +24,12 @@
 
         function setEnrollmentDate($new_enrollment_date)
         {
-            // $this->enrollment_date = (DateTime) $new_enrollment_date;
+            $this->enrollment_date = $new_enrollment_date;
         }
 
         function getEnrollmentDate()
         {
-            // return $this->enrollment_date;
+            return $this->enrollment_date;
         }
 
         function getId()
