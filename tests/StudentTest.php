@@ -82,7 +82,17 @@
 
         function testGetId()
         {
+            // Arrange
+            $student_name = 'Mario Batali';
+            $enrollment_date = '2017-08-15';
+            $test_student = new Student($student_name, $enrollment_date);
+            $test_student->save();
 
+            // Act
+            $result = $test_student->getId();
+
+            // Assert
+            $this->assertEquals(true, is_numeric($result));
         }
 
         function testSave()
